@@ -1,3 +1,5 @@
+#include <iostream>
+using namespace std;
 #define fa(p) p>>1
 #define ls(p) p<<1
 #define rs(p) ((p) << 1 | 1)
@@ -84,3 +86,24 @@ class priorityQueue{
             return currentSize;
         }
 };
+int main(){
+    int n;
+    cin>>n;
+    long int x;//有个节点爆int
+    priorityQueue<long int> q;
+    for(register int i=0;i<n;i++){
+        cin>>x;
+        q.push(x);
+    }
+    long int ans=0,a,b;
+    for(register int i=0;i<n-1;i++){
+        a=q.top();
+        q.pop();
+        b=q.top();
+        q.pop();
+        ans+=a+b;
+        q.push(a+b);
+    }
+    cout<<ans<<endl;
+    return 0;
+}
